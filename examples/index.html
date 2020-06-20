@@ -37,7 +37,7 @@
     }
     </style>
 
-    <title>d3-flame-graph</title>
+    <title>Tommy's d3-flame-graph</title>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -60,7 +60,7 @@
             </form>
           </div>
         </nav>
-        <h3 class="text-muted">d3-flame-graph</h3>
+        <h3 class="text-muted">Tommy's d3-flame-graph</h3>
       </div>
       <div id="chart">
       </div>
@@ -78,7 +78,8 @@
 
     <script type="text/javascript">
     var chart = flamegraph()
-      .width(960)
+      // .width(960)
+      .width(500)
       .cellHeight(18)
       .transitionDuration(750)
       .minFrameSize(5)
@@ -95,9 +96,9 @@
         d.highlight ? "#6aff8f" : originalColor);
 
     // Example on how to use custom a tooltip.
-    var tip = flamegraph.tooltip.defaultFlamegraphTooltip()
-      .html(function(d) { return "name: " + d.data.name + ", value: " + d.data.value; });
-    chart.tooltip(tip);
+    // var tip = flamegraph.tooltip.defaultFlamegraphTooltip()
+    //   .html(function(d) { return "name: " + d.data.name + ", value: " + d.data.value; });
+    // chart.tooltip(tip);
 
     var details = document.getElementById("details");
     chart.setDetailsElement(details);
@@ -123,6 +124,7 @@
 
     d3.json("stacks.json", function(error, data) {
       if (error) return console.warn(error);
+      console.log("stacks.json -", data)
       d3.select("#chart")
           .datum(data)
           .call(chart)
